@@ -12,6 +12,11 @@ scalaVersion := "2.12.2"
 
 libraryDependencies ++= Seq( jdbc , ehcache , ws , specs2 % Test , guice )
 
+// Custom library
+libraryDependencies ++= Seq(
+  "com.pauldijou" %% "jwt-play" % "0.16.0"
+)
+
 unmanagedResourceDirectories in Test <+=  baseDirectory ( _ /"target/web/public/test" )  
 
       
