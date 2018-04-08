@@ -10,10 +10,16 @@ import play.api.mvc.Results.{BadRequest,Forbidden}
 
 import scala.util.{Try,Success,Failure}
 
+// parser: 封包解析器
+// ec : 高並發線程資源池
 class CustomSecureAction @Inject()(parser: BodyParsers.Default)(implicit ec: ExecutionContext) extends ActionBuilderImpl(parser){
 
+  // logger
   private val logger = play.api.Logger(this.getClass)
 
+
+  // 當封包進來Action 的時候，提前做的處理。
+  // [A] 泛型：讓此方法可接受的物件，秉鴻找相應文件給大家看。
   override def invokeBlock[A](request: Request[A], block: (Request[A]) => Future[Result]) = {
 
     /**

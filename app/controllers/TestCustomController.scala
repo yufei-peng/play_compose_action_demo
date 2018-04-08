@@ -2,15 +2,18 @@ package controllers
 
 
 import javax.inject._
+
 import play.api.mvc._
+
 import scala.concurrent.Future
-import custom.actions.CustomSecureAction
+import custom.actions.{CustomSecureAction, TestSecureAction}
 /**
   * This controller creates an `Action` to handle HTTP requests to the
   * application's home page.
   */
 @Singleton
 class TestCustomController @Inject()(
+                                      testSecureAction:TestSecureAction,
                                       customSecureAction:CustomSecureAction,
                                       cc: ControllerComponents) extends AbstractController(cc) {
 
@@ -22,6 +25,13 @@ class TestCustomController @Inject()(
     */
   def testCustomSecureAction = customSecureAction {
     Ok("Header test has passed")
+  }
+
+
+
+
+  def testTestSercureAction = testSecureAction {
+    Ok("test OK")
   }
 
 }

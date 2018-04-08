@@ -5,6 +5,15 @@ import play.api.inject.guice.GuiceApplicationBuilder
 import play.api.mvc.{EssentialAction, Results}
 import play.api.test.{FakeRequest, Helpers, PlaySpecification, WithApplication}
 
+
+/**
+  *
+  *
+  *
+  *
+  *
+  *
+  * */
 class TestCustomSecureAction extends PlaySpecification  with Results {
 
   val application: Application = GuiceApplicationBuilder().build()
